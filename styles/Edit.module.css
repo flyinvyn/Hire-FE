@@ -1,0 +1,171 @@
+.purples {
+  height: 400px;
+  background-color: #5e50a1;
+  position: relative;
+}
+.wrapper {
+  /* height: 400px; */
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+
+  bottom: 200px;
+}
+.image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  /* margin-left: 130px; */
+  margin-top: 20px;
+}
+.wrapp {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  justify-content: center;
+  /* margin-left: 130px; */
+}
+.edit {
+  font-size: 18px;
+  font-weight: 600;
+  color: #9ea0a5;
+  margin-top: 10px;
+}
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2a36;
+}
+.skill {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2a36;
+  margin-top: 30px;
+}
+.skill-item{
+  background-color: #FBB01799;
+  border: 1px solid #FBB017;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  padding: 5px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.item-skill{
+  background-color: #FBB01799;
+  border: 1px solid #FBB017;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  padding: 5px;
+}
+.job {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1f2a36;
+}
+.adress {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9ea0a5;
+
+}
+.work {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9ea0a5;
+}
+.simpan {
+  height: 50px;
+  border-radius: 4px;
+  border: none;
+  background-color: #5e50a1;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+.batal {
+  border: 1px #5e50a1 solid;
+  background-color: transparent;
+  color: #5e50a1;
+  font-size: 16px;
+  border-radius: 4px;
+  font-weight: 700;
+  height: 50px;
+}
+.wrapper-right {
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+
+  bottom: 200px;
+}
+#wrapper-right {
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+
+  bottom: 200px;
+}
+#title{
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2a36;
+}
+#label{
+  font-size: 12px;
+  font-weight: 400px;
+  color: #9ea0a5;
+}
+.skill-button{
+  border: none;
+  background-color: #FBB017;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 10px;
+}
+.save-experience {
+  border: 1px #FBB017 solid;
+  background-color: transparent;
+  color: #FBB017;
+  font-size: 16px;
+  border-radius: 4px;
+  font-weight: 700;
+  height: 50px;
+}
+#label-radio{
+  font-size: 13px;
+  font-weight: 600;
+  color: #46505C;
+}
+.edit-experience{
+  border: none;
+  background-color: #FBB017;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 10px;
+  /* width: 60px; */
+}
+.cancel-experience{
+  border: none;
+  background-color: #DB3022;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 10px;
+  /* width: 40px; */
+}
+
+@media screen and (max-width:600px) {
+  .wrapper-right{
+    margin-top: 150px;
+  }
+}

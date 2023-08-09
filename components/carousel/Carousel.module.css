@@ -1,0 +1,18 @@
+.wrapper{
+    height: 350px;
+    width: 300px;
+    background-color: #fff;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 4px;
+}
+.image{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #FBB0175E;
+}

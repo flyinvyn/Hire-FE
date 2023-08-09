@@ -1,0 +1,54 @@
+
+.nav{
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.btn{
+    margin-left: auto;
+}
+.hire{
+    background-color: #5E50A1;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px;
+}
+.link{
+    text-decoration: none;
+}
+#text{
+    margin-left: 200px;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.user{
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #5E50A1;
+    border-radius: 3px;
+    color: #5E50A1;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 20px;
+}
+.bell{
+    border: none;
+    background-color: transparent;
+    margin-right: 20px;
+}
+.circle{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+}
+.img{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
