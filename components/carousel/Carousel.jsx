@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import foto from '../../public/img/profile.png'
+// import foto from '../../public/img/profile.png'
 import Image from 'next/image'
 import style from './Carousel.module.css'
 import Carousel from 'react-multi-carousel';

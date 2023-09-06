@@ -4,11 +4,11 @@ import { Porto } from './Porto'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
-import ModalDelete from '../modal/ModalDelete';
+// import ModalDelete from '../modal/ModalDelete';
 import profile from '../../public/img/profile.png'
 import ModalDeletePorto from '../modal/ModalDeletePorto';
 import Image from 'next/image';
-import ModalEditExp from '../modal/ModalEditExp';
+// import ModalEditExp from '../modal/ModalEditExp';
 import ModalEditPorto from '../modal/ModalEditPorto';
 
 export const Portofolio = () => {

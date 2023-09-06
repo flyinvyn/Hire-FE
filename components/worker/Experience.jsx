@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import styles from '../../styles/Edit.module.css'
-import { Exp } from './Exp'
+// import { Exp } from './Exp'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 // import DatePicker from 'react-date-picker';

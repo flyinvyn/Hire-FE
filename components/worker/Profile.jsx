@@ -1,6 +1,6 @@
 import styles from '../../styles/Edit.module.css'
 import noimage from '../../public/img/noimage.png'
-import pencil from '../../public/img/pencil.png'
+// import pencil from '../../public/img/pencil.png'
 import map from '../../public/img/map.png'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
