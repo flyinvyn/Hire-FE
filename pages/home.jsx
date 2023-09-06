@@ -9,7 +9,7 @@ import axios from 'axios'
 import Pagination from './pagination'
 import Link from 'next/link'
 
-const home = () => {
+const Home = () => {
   const [sort, setSort] = useState();
   const onSelectionChange = (e) => {
     const sortDirection = e.target.value;
@@ -39,7 +39,7 @@ const home = () => {
   const [search, setSearch] = useState("")
   const [skils, setSkils] = useState([]);
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_API}/worker/`)
+    axios.get(`${process.env.NEXT_PUBLIC_API}/worker`)
       .then((res) => {
         setSkils(res.data.data);
       })
@@ -80,17 +80,11 @@ const home = () => {
           <button className={styles.srch} type="button">Search</button>
         </div>
       </div>
-      {currentPosts.filter((item) => {
-        if (search === "") {
-          return item
-        } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
-          return item
-        }
-      }).map((item => (
-        <div className="container bg-white" style={{ borderRadius: "4px" }}>
+      {currentPosts.map((item, index) => (
+        <div key={index} className="container bg-white" style={{ borderRadius: "4px" }}>
           <div className="row">
             <div className="col-lg-1 col-md-1">
-              <img src={item.photo == "null" ? map : item.photo} style={{ borderRadius: "50%", width: "100px", height: "100px" }} alt='photo' />
+              <Image src={item.photo == "null" ? map : item.photo} width={100} height={100} style={{ borderRadius: "50%" }} alt='photo' />
             </div>
             <div className="col-lg-3 col-md-3 mx-5">
               <div>
@@ -102,8 +96,8 @@ const home = () => {
                 {/* <img src={data.photo == "null" ? noimage : data.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} /> */}
               </div>
               <div>
-                {item.skills.map((skil)=>(
-                 <button className={styles.btn}>{skil}</button>
+                {item.skills.map((skil, index) => (
+                  <button key={index} className={styles.btn}>{skil}</button>
                 ))}
               </div>
             </div>
@@ -113,13 +107,13 @@ const home = () => {
           </div>
           <hr />
         </div>
-      )))}
-      <div className='text-center'>
+      ))}
+      <div div className='text-center'>
         <Pagination totalPosts={skils.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
-      </div>
+      </div >
       <Footer />
     </>
   )
 }
 
-export default home
+export default Home

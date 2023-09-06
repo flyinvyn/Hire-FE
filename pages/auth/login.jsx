@@ -9,7 +9,7 @@ import { useRouter } from "next/router"
 import axios from "axios"
 import Swal from "sweetalert2"
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
   const [data, setData] = useState({
     email: "",
@@ -98,4 +98,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

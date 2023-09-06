@@ -31,6 +31,7 @@ export const Portofolio = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady])
 
     const [porto, setPorto] = useState({
@@ -84,11 +85,11 @@ export const Portofolio = () => {
                 <h2 className='ps-5 pt-3' id={styles.title}>Portofolio</h2>
                 <hr />
                 <div className="container">
-                    {datas.map((data => (
-                        <div className="row">
+                    {datas.map((data, index) => (
+                        <div key={index} className="row">
                             <div className="col-lg-4 col-md-4 mb-5">
                                 <div className="card p-0" style={{ width: "18rem", border: "none" }}>
-                                    <img src={data.photo == "null" ? profile : data.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} />
+                                    <Image src={data.photo == "null" ? profile : data.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} />
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">
@@ -103,12 +104,12 @@ export const Portofolio = () => {
                                         photo={data.photo}
                                         id_worker={data.id_worker}
                                         id_porto={data.id_porto}
-                                        >Update</ModalEditPorto>
+                                    >Update</ModalEditPorto>
                                     <ModalDeletePorto id={data.id_porto}>Delete</ModalDeletePorto>
                                 </div>
                             </div>
                         </div>
-                    )))}
+                    ))}
                 </div>
                 <hr />
                 <div className="ps-5 pe-5 pb-5">

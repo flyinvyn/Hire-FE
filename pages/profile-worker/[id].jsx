@@ -11,24 +11,25 @@ import Image from 'next/image'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-const profileWorker = () => {
+const ProfileWorker = () => {
     const router = useRouter();
     const [login, setlogin] =useState();
     useEffect(()=>{
-        const isLogin = localStorage.getItem("id_worker");
+        const isLogin = localStorage.getItem("photo");
         setlogin(isLogin)
     })
     const [workers, setWorkers] = useState([]);
     useEffect(() => {
         if (router.isReady) {
             axios.get(`${process.env.NEXT_PUBLIC_API}/worker/${router.query.id}`)
-            .then((res) => {
-                setWorkers(res.data.data);
+                .then((res) => {
+                    setWorkers(res.data.data);
                 })
                 .catch((err) => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
 
     //get skill
@@ -43,6 +44,7 @@ const profileWorker = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
 
     //get skill
@@ -57,6 +59,7 @@ const profileWorker = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
 
     //get experience
@@ -71,6 +74,7 @@ const profileWorker = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
     return (
         <>
@@ -80,10 +84,13 @@ const profileWorker = () => {
                 <div className="row ">
                     <div className="col-lg-4 col-md-4">
                         <div className={styles.wrapper}>
-                            {workers.map((worker => (
-                                <div>
+                            {workers.map((worker, index) => (
+                                <div key={index}>
                                     <div className='d-flex justify-content-center'>
-                                        <img src={worker.photo == "null" ? profile :worker.photo} className={styles.image} alt='profile' />
+                                        <Image src={login === "null" ? profile : login}
+                                        width={150}
+                                        height={150}
+                                        style={{marginTop:"20px",borderRadius:"50%"}} alt='profile' />
                                     </div>
                                     <div className="container px-5 mt-5">
                                         <div>
@@ -104,22 +111,22 @@ const profileWorker = () => {
                                             </div>
                                         </div>
                                         {/* <div className="mt-5">
-                                            <div className="d-flex gap-3">
-                                                <Image src={mail} className='mt-3' />
-                                                <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>Louistommo@gmail.com</p>
-                                            </div>
-                                            <div className="d-flex gap-3">
-                                                <Image src={instagram} className='mt-3' />
-                                                <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louist91</p>
-                                            </div>
-                                            <div className="d-flex gap-3">
-                                                <Image src={github} className='mt-3' />
-                                                <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louistommo</p>
-                                            </div>
-                                        </div> */}
+                                        <div className="d-flex gap-3">
+                                            <Image src={mail} className='mt-3' />
+                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>Louistommo@gmail.com</p>
+                                        </div>
+                                        <div className="d-flex gap-3">
+                                            <Image src={instagram} className='mt-3' />
+                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louist91</p>
+                                        </div>
+                                        <div className="d-flex gap-3">
+                                            <Image src={github} className='mt-3' />
+                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louistommo</p>
+                                        </div>
+                                    </div> */}
                                     </div>
                                 </div>
-                            )))}
+                            ))}
                         </div>
                     </div>
                     <div className="col-lg-8 col-md-8">
@@ -129,12 +136,12 @@ const profileWorker = () => {
                             <div className="ps-2 pe-2 pb-5">
                                 <div className="container">
                                     <div className="row text-center">
-                                        {portos.map((porto => (
-                                            <div className="col-lg-4 col-md-4 mt-4">
-                                                <img src={porto?.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} alt='porto' />
-                                                <p className='mt-3'>{porto?.apk_name}</p>
-                                            </div>
-                                        )))}
+                                        {portos.map((porto,index)=>(
+                                            <div key={index} className="col-lg-4 col-md-4 mt-4">
+                                            <Image src={porto?.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} alt='porto' />
+                                            <p className='mt-3'>{porto?.apk_name}</p>
+                                        </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
@@ -164,4 +171,4 @@ const profileWorker = () => {
     )
 }
 
-export default profileWorker
+export default ProfileWorker

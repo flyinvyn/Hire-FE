@@ -22,7 +22,8 @@ const ModalEditExp = ({ id_exp, id_worker, position, company_name, work_start, w
     useEffect(() => {
         const isLogin = localStorage.getItem("id_worker")
         setLogin(isLogin)
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     const handleChange = (e) => {
         setData({

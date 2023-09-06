@@ -28,7 +28,7 @@ const responsive = {
 export const Carousels = () => {
     const [datas, setDatas] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:5000/worker`)
+        axios.get(`${process.env.NEXT_PUBLIC_API}/worker`)
             .then((res) => {
                 setDatas(res.data.data);
             })
@@ -40,15 +40,15 @@ export const Carousels = () => {
         <>
             <div className="container">
                 <Carousel responsive={responsive} >
-                    {datas.map((data => (
-                        <div className={style.wrapper}>
-                            <img src={data.photo} className={style.image} />
-                            <h2>{data?.name}</h2>
-                            <p>{data?.job_desk}</p>
-                            <p>{data?.description}</p>
-                            <p style={{ width: "150px" }}>{data?.description}</p>
-                        </div>
-                    )))}
+                    {datas.map((data,index)=>(
+                        <div key={index} className={style.wrapper}>
+                        <Image src={data.photo} width={100} height={100} className={style.image} />
+                        <h2>{data?.name}</h2>
+                        <p>{data?.job_desk}</p>
+                        <p>{data?.description}</p>
+                        <p style={{ width: "150px" }}>{data?.description}</p>
+                    </div>
+                    ))}
                 </Carousel>
             </div>
         </>

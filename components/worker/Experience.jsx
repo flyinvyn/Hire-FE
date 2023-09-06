@@ -68,6 +68,7 @@ export const Experience = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady])
     // const [startDate, setStartdate] = useState(new Date())
     // const onChangeDateHandler = (value) =>{

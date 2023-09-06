@@ -13,11 +13,12 @@ import { useRouter } from 'next/router'
 
 const Hire = () => {
     const router = useRouter();
-    const [login, setlogin] = useState();
-    useEffect(() => {
-        const isLogin = localStorage.getItem("id_worker");
-        setlogin(isLogin)
-    })
+    // const [login, setlogin] = useState();
+    // useEffect(() => {
+    //     const isLogin = localStorage.getItem("id_worker");
+    //     setlogin(isLogin)
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // },[])
     const [workers, setWorkers] = useState([]);
     useEffect(() => {
         if (router.isReady) {
@@ -29,6 +30,7 @@ const Hire = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
 
     //get skill
@@ -43,6 +45,7 @@ const Hire = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
 
     //get skill
@@ -57,6 +60,7 @@ const Hire = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
 
     //get experience
@@ -71,6 +75,7 @@ const Hire = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
     return (
         <>
@@ -83,7 +88,7 @@ const Hire = () => {
                             {/* {workers.map((worker => ( */}
                             <div>
                                 <div className='d-flex justify-content-center'>
-                                    <Image src={profile} className={styles.image} alt='image' />
+                                    <Image src={profile} className={styles.image} alt='profile' />
                                 </div>
                                 <div className="container px-5 mt-5">
                                     <div>

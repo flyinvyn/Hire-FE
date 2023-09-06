@@ -9,7 +9,7 @@ import axios from "axios"
 import { useRouter } from "next/router"
 import Swal from "sweetalert2"
 
-const registerUser = () => {
+const RegisterUser = () => {
   const router = useRouter()
   const [data, setData] = useState({
     name: "",
@@ -111,4 +111,4 @@ const registerUser = () => {
   )
 }
 
-export default registerUser
+export default RegisterUser

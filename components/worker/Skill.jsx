@@ -54,6 +54,7 @@ export const Skill = () => {
                     console.log(err);
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady])
 
     return (
@@ -62,13 +63,11 @@ export const Skill = () => {
                 <h2 className='ps-5 pt-3' id={styles.title}>Skil</h2>
                 <hr />
                 <div className="ps-5 mb-5 d-flex flex-wrap gap-3">
-                    {skill.map((skil => (
-                        // <ModalDeleteSkill id={skil.id_skil}>
-                            <button className={styles['item-skill']}>{skil?.skill_name}
-                            <ModalDeleteSkill id_skill={skil.id_skill} ></ModalDeleteSkill>
-                            </button>
-                        // {/* </ModalDeleteSkill> */}
-                    )))}
+                    {skill.map((skil,index)=>(
+                        <button key={index} className={styles['item-skill']}>{skil?.skill_name}
+                        <ModalDeleteSkill id_skill={skil.id_skill} ></ModalDeleteSkill>
+                        </button>
+                    ))}
                 </div>
                 <div className="ps-5 pe-5 pb-5">
                     <form>

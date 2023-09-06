@@ -5,7 +5,7 @@ import main from '../../public/img/first.png'
 import logo from '../../public/logo/white.png'
 import Link from "next/link"
 
-const registerPerekrut = () => {
+const RegisterPerekrut = () => {
   return (
     <>
       <Head>
@@ -77,4 +77,4 @@ const registerPerekrut = () => {
   )
 }
 
-export default registerPerekrut
+export default RegisterPerekrut

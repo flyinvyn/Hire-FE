@@ -27,7 +27,7 @@ const Nav = () => {
                 <div className="container">
                     <nav className="navbar navbar-expand-lg navbar-light">
                         <div className="container-fluid">
-                            <Link className="navbar-brand" href="/"><Image src={logo} /></Link>
+                            <Link className="navbar-brand" href="/"><Image src={logo} alt='logo' /></Link>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
@@ -38,10 +38,10 @@ const Nav = () => {
                                 </div>
                                 <div className="">
                                     <button className={style.bell} type="button">
-                                        <Image src={bell} />
+                                        <Image src={bell} alt='bell' />
                                     </button>
                                     <button className={style.bell} type="button">
-                                        <Image src={mail} />
+                                        <Image src={mail} alt='mail' />
                                     </button>
                                     <div className="btn-group">
                                             <div

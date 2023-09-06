@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from '../../styles/Edit.module.css'
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Image from 'next/image';
 
 export const DataWorker = () => {
 
@@ -111,7 +112,7 @@ export const DataWorker = () => {
                             <label for="exampleFormControlTextarea1" className="form-label" id={styles.label}>Deskripsi singkat</label>
                             <textarea className="form-control" name='description' value={data.description == "undefined" ? "" : data.description} onChange={handleChange} id="exampleFormControlTextarea1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "100px" }} rows="3" placeholder='Tuliskan deskripsi singkat' />
                         </div>
-                        {preview ? <img src={preview} alt="avatar" height={200} width={200} className="m-auto my-3" style={{ width: '100' }} /> : ''}
+                        {preview ? <Image src={preview} alt="avatar" height={200} width={200} className="m-auto my-3" style={{ width: '100' }} /> : ''}
                     </form>
                     <input type="hidden" name='id_worker' value={(data.id_worker = login)} />
                     <button type='button' onClick={handleUpdate} style={{ backgroundColor: "#FBB017", border: "none", color: "#fff", fontSize: "12px", fontWeight: "700", borderRadius: "4px", marginTop: "30px" }}>Simpan</button>

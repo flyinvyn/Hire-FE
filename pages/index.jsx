@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Hire Jobs</title>
       </Head>
       <NavbarAuth />
       <div className="bg-white">
@@ -46,16 +46,16 @@ export default function Home() {
         <div className="container mt-5">
           <div className="row" id={styles.row}>
             <div className="col-lg-6 col-md-5" id={styles.second}>
-              <Image src={second} className='img-fluid' alt='image' />
+              <Image src={second} className='img-fluid' alt='tumb' />
             </div>
             <div className="col-lg-6 col-md-5">
               <h2>Kenapa harus mencari tallent di peworld</h2>
               <div className='d-flex align-item-center mt-3'>
-                <Image src={tick} alt="image" />
+                <Image src={tick} alt="tumb" />
                 <p className={styles.p}>Lorem ipsum dolor sit amet.</p>
               </div>
               <div className='d-flex align-item-center mt-3'>
-                <Image src={tick} alt="image" />
+                <Image src={tick} alt="tumb" />
                 <p className={styles.p}>Lorem ipsum dolor sit amet.</p>
               </div>
               <div className='d-flex align-item-center mt-3'>

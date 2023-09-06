@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import styles from '../../styles/Edit.module.css'
 import Swal from 'sweetalert2';
 import style from '../../styles/Edit.module.css'
+import Image from 'next/image';
 
 
 const ModalEditPorto = ({ id_porto, apk_name, link_repo, type, children }) => {
@@ -105,7 +106,7 @@ const ModalEditPorto = ({ id_porto, apk_name, link_repo, type, children }) => {
                         <div className="mb-4">
                             <p id={styles.label}>Upload gambar</p>
                         </div>
-                        {preview ? <img src={preview} alt="avatar" height={200} width={200} className="m-auto my-3" style={{ width: '100' }} /> : ''}
+                        {preview ? <Image src={preview} alt="avatar" height={200} width={200} className="m-auto my-3" style={{ width: '100' }} /> : ''}
                         <input className='form-control' type="file" name='photo' onChange={handleUpload} />
                         <input type="hidden" name='id_worker' value={(data.id_worker = login)} />
                         {/* <hr className='mb-5' /> */}
