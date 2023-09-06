@@ -89,7 +89,7 @@ export const Portofolio = () => {
                         <div key={index} className="row">
                             <div className="col-lg-4 col-md-4 mb-5">
                                 <div className="card p-0" style={{ width: "18rem", border: "none" }}>
-                                    <Image src={data.photo == "null" ? profile : data.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} />
+                                    <Image src={data.photo == "null" ? profile : data.photo} alt='profile' className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} />
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">

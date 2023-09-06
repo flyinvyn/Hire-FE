@@ -80,8 +80,8 @@ export const Experience = () => {
                 <h2 className='ps-5 pt-3' id={styles.title}>Pengalaman kerja</h2>
                 <hr />
                 <div className="container">
-                    {portos.map((item) => (
-                        <div className="row">
+                    {portos.map((item,index) => (
+                        <div key={index} className="row">
                             <div className="col-lg-8 col-md-8">
                                 <div className='ps-5'>
                                     <div className="">

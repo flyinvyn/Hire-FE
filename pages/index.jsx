@@ -39,7 +39,7 @@ export default function Home() {
               </div>
             </div>
             <div className="col-lg-6 col-md-6 mt-5 pb-5 mb-5 ">
-              <Image src={first} className='img-fluid' />
+              <Image src={first} className='img-fluid' alt='tumb' />
             </div>
           </div>
         </div>

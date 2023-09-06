@@ -94,7 +94,7 @@ const Hire = () => {
                                     <div>
                                         <p className={styles.name}>Louist91</p>
                                         <p className={styles.job}>Web dev</p>
-                                        <p className={styles.adress}><span><Image src={map} /></span>Ganeas</p>
+                                        <p className={styles.adress}><span><Image src={map} alt='map' /></span>Ganeas</p>
                                         <p className={styles.adress}>lorem ipsum dolor sit amet.</p>
                                     </div>
                                 </div>

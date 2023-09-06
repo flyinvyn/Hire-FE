@@ -13,11 +13,12 @@ import { useRouter } from 'next/router'
 
 const ProfileWorker = () => {
     const router = useRouter();
-    const [login, setlogin] =useState();
-    useEffect(()=>{
+    const [login, setlogin] = useState();
+    useEffect(() => {
         const isLogin = localStorage.getItem("photo");
         setlogin(isLogin)
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     const [workers, setWorkers] = useState([]);
     useEffect(() => {
         if (router.isReady) {
@@ -88,15 +89,15 @@ const ProfileWorker = () => {
                                 <div key={index}>
                                     <div className='d-flex justify-content-center'>
                                         <Image src={login === "null" ? profile : login}
-                                        width={150}
-                                        height={150}
-                                        style={{marginTop:"20px",borderRadius:"50%"}} alt='profile' />
+                                            width={150}
+                                            height={150}
+                                            style={{ marginTop: "20px", borderRadius: "50%" }} alt='profile' />
                                     </div>
                                     <div className="container px-5 mt-5">
                                         <div>
                                             <p className={styles.name}>{worker.name == "undefined" ? "" : worker.name}</p>
                                             <p className={styles.job}>{worker.job_desk == "undefined" ? "" : worker.job_desk}</p>
-                                            <p className={styles.adress}><span><Image src={map} /></span>{worker.domisili == "undefined" ? "" : worker.domisili}</p>
+                                            <p className={styles.adress}><span><Image src={map} alt='map' /></span>{worker.domisili == "undefined" ? "" : worker.domisili}</p>
                                             <p className={styles.adress}>{worker.work_place == "undefined" ? "" : worker.work_place}</p>
                                             <p className={styles.adress}>{worker.description == "undefined" ? "" : worker.description}</p>
                                         </div>
@@ -105,9 +106,9 @@ const ProfileWorker = () => {
                                         <div className="mt-5">
                                             <h3 className={styles.skill}>Skill</h3>
                                             <div className="d-flex flex-wrap">
-                                                {skils.map((skil => (
-                                                    <div className={styles['skill-item']}>{skil?.skill_name}</div>
-                                                )))}
+                                                {skils.map((skil, index) => (
+                                                    <div key={index} className={styles['skill-item']}>{skil?.skill_name}</div>
+                                                ))}
                                             </div>
                                         </div>
                                         {/* <div className="mt-5">
@@ -136,11 +137,11 @@ const ProfileWorker = () => {
                             <div className="ps-2 pe-2 pb-5">
                                 <div className="container">
                                     <div className="row text-center">
-                                        {portos.map((porto,index)=>(
+                                        {portos.map((porto, index) => (
                                             <div key={index} className="col-lg-4 col-md-4 mt-4">
-                                            <Image src={porto?.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} alt='porto' />
-                                            <p className='mt-3'>{porto?.apk_name}</p>
-                                        </div>
+                                                <Image src={porto?.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} alt='porto' />
+                                                <p className='mt-3'>{porto?.apk_name}</p>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -152,15 +153,15 @@ const ProfileWorker = () => {
                             <hr style={{ maxWidth: "150px", marginLeft: "35px" }} />
                             <div className="ps-2 pe-2 pb-5">
                                 <div className="container">
-                                    {experiences.map((experience => (
-                                        <div className='ps-5'>
+                                    {experiences.map((experience, index) => (
+                                        <div key={index} className='ps-5'>
                                             <p id={styles.title}>{experience?.position}</p>
                                             <p style={{ fontSize: "14px", color: "#46505C" }}>{experience?.company_name}</p>
                                             <p style={{ fontSize: "12px", color: "#9EA0A5" }}>{experience?.work_start}<span> - </span><span style={{ fontSize: "12px", color: "#9EA0A5" }}>{experience?.work_end}</span></p>
                                             <p className='mt-3' style={{ width: "450px" }}>{experience?.description}</p>
                                             <hr />
                                         </div>
-                                    )))}
+                                    ))}
                                 </div>
                             </div>
                         </div>
