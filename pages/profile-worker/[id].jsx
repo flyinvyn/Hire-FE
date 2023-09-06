@@ -13,12 +13,17 @@ import { useRouter } from 'next/router'
 
 const profileWorker = () => {
     const router = useRouter();
+    const [login, setlogin] =useState();
+    useEffect(()=>{
+        const isLogin = localStorage.getItem("id_worker");
+        setlogin(isLogin)
+    })
     const [workers, setWorkers] = useState([]);
     useEffect(() => {
         if (router.isReady) {
             axios.get(`${process.env.NEXT_PUBLIC_API}/worker/${router.query.id}`)
-                .then((res) => {
-                    setWorkers(res.data.data);
+            .then((res) => {
+                setWorkers(res.data.data);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -75,44 +80,46 @@ const profileWorker = () => {
                 <div className="row ">
                     <div className="col-lg-4 col-md-4">
                         <div className={styles.wrapper}>
-                            <div className='d-flex justify-content-center'>
-                                <Image src={profile} className={styles.image} />
-                            </div>
-                            <div className="container px-5 mt-5">
-                                {workers.map((worker => (
-                                    <div>
-                                        <p className={styles.name}>{worker.name == "undefined" ? "" : worker.name}</p>
-                                        <p className={styles.job}>{worker.job_desk == "undefined" ? "" : worker.job_desk}</p>
-                                        <p className={styles.adress}><span><Image src={map} /></span>{worker.domisili == "undefined" ? "" : worker.domisili}</p>
-                                        <p className={styles.adress}>{worker.work_place == "undefined" ? "" : worker.work_place}</p>
-                                        <p className={styles.adress}>{worker.description == "undefined" ? "" : worker.description}</p>
-                                    </div>
-                                )))}
+                            {workers.map((worker => (
                                 <div>
-                                    <div className="mt-5">
-                                        <h3 className={styles.skill}>Skill</h3>
-                                        <div className="d-flex flex-wrap">
-                                            {skils.map((skil => (
-                                                <div className={styles['skill-item']}>{skil?.skill_name}</div>
-                                            )))}
+                                    <div className='d-flex justify-content-center'>
+                                        <img src={worker.photo == "null" ? profile :worker.photo} className={styles.image} alt='profile' />
+                                    </div>
+                                    <div className="container px-5 mt-5">
+                                        <div>
+                                            <p className={styles.name}>{worker.name == "undefined" ? "" : worker.name}</p>
+                                            <p className={styles.job}>{worker.job_desk == "undefined" ? "" : worker.job_desk}</p>
+                                            <p className={styles.adress}><span><Image src={map} /></span>{worker.domisili == "undefined" ? "" : worker.domisili}</p>
+                                            <p className={styles.adress}>{worker.work_place == "undefined" ? "" : worker.work_place}</p>
+                                            <p className={styles.adress}>{worker.description == "undefined" ? "" : worker.description}</p>
                                         </div>
                                     </div>
-                                    <div className="mt-5">
-                                        <div className="d-flex gap-3">
-                                            <Image src={mail} className='mt-3' />
-                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>Louistommo@gmail.com</p>
+                                    <div>
+                                        <div className="mt-5">
+                                            <h3 className={styles.skill}>Skill</h3>
+                                            <div className="d-flex flex-wrap">
+                                                {skils.map((skil => (
+                                                    <div className={styles['skill-item']}>{skil?.skill_name}</div>
+                                                )))}
+                                            </div>
                                         </div>
-                                        <div className="d-flex gap-3">
-                                            <Image src={instagram} className='mt-3' />
-                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louist91</p>
-                                        </div>
-                                        <div className="d-flex gap-3">
-                                            <Image src={github} className='mt-3' />
-                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louistommo</p>
-                                        </div>
+                                        {/* <div className="mt-5">
+                                            <div className="d-flex gap-3">
+                                                <Image src={mail} className='mt-3' />
+                                                <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>Louistommo@gmail.com</p>
+                                            </div>
+                                            <div className="d-flex gap-3">
+                                                <Image src={instagram} className='mt-3' />
+                                                <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louist91</p>
+                                            </div>
+                                            <div className="d-flex gap-3">
+                                                <Image src={github} className='mt-3' />
+                                                <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louistommo</p>
+                                            </div>
+                                        </div> */}
                                     </div>
                                 </div>
-                            </div>
+                            )))}
                         </div>
                     </div>
                     <div className="col-lg-8 col-md-8">
@@ -124,7 +131,7 @@ const profileWorker = () => {
                                     <div className="row text-center">
                                         {portos.map((porto => (
                                             <div className="col-lg-4 col-md-4 mt-4">
-                                                <img src={porto?.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} />
+                                                <img src={porto?.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} alt='porto' />
                                                 <p className='mt-3'>{porto?.apk_name}</p>
                                             </div>
                                         )))}

@@ -1,4 +1,7 @@
 module.exports = {
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
   async rewrites() {
     return [
       {
@@ -20,7 +23,11 @@ module.exports = {
       {
         source:'/worker-profile',
         destination:'/worker/worker-profile',
-      }
+      },
+      // {
+      //   source:'/edit-recruiter',
+      //   destination:'/recruiter',
+      // },
     ]
   }
 }

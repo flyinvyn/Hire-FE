@@ -119,13 +119,13 @@ export const Experience = () => {
                         </div>
                         <div className="mb-4">
                             <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Posisi</label>
-                            <input type="text" name='position' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Web developer" />
+                            <input type="text" name='position' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Web developer" required />
                         </div>
                         <div className="row">
                             <div className="col-lg-6 col-md-6">
                                 <div className="mb-4">
                                     <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Nama perusahaan</label>
-                                    <input type="text" name='company_name' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="PT Harus bisa" />
+                                    <input type="text" name='company_name' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="PT Karya Guna Jaya" required />
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-3">
@@ -133,7 +133,7 @@ export const Experience = () => {
                                     {/* <p id={styles.label}>Dari bulan/tahun</p> */}
                                     {/* <DatePicker selected={startDate} onChange={onChangeDateHandler} /> */}
                                     <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Dari Bulan/tahun</label>
-                                    <input type="date" name='work_start' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Januari 2018" />
+                                    <input type="date" name='work_start' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Januari 2018" required />
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-3">
@@ -141,13 +141,13 @@ export const Experience = () => {
                                     {/* <p id={styles.label}>Sampai bulan/tahun</p> */}
                                     {/* <DatePicker  /> */}
                                     <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Sampai Bulan/tahun</label>
-                                    <input type="date" name='work_end' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Januari 2019" />
+                                    <input type="date" name='work_end' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Januari 2019" required />
                                 </div>
                             </div>
                         </div>
                         <div className="mb-5">
                             <label for="exampleFormControlTextarea1" className="form-label" id={styles.label}>Deskripsi singkat</label>
-                            <textarea className="form-control" name='description' onChange={handleChange} id="exampleFormControlTextarea1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "100px" }} rows="3" placeholder='Deskripsikan pekerjaan anda' />
+                            <textarea className="form-control" name='description' onChange={handleChange} id="exampleFormControlTextarea1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "100px" }} rows="3" placeholder='Deskripsikan pekerjaan anda' required />
                         </div>
                         <hr className='mb-5' />
                         <div className="d-grid">

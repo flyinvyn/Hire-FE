@@ -90,7 +90,7 @@ const home = () => {
         <div className="container bg-white" style={{ borderRadius: "4px" }}>
           <div className="row">
             <div className="col-lg-1 col-md-1">
-              <img src={item.photo == "null" ? map : item.photo} style={{ borderRadius: "50%", width: "100px", height: "100px" }} />
+              <img src={item.photo == "null" ? map : item.photo} style={{ borderRadius: "50%", width: "100px", height: "100px" }} alt='photo' />
             </div>
             <div className="col-lg-3 col-md-3 mx-5">
               <div>

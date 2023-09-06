@@ -11,6 +11,11 @@
 
   bottom: 200px;
 }
+.wrapperLeft {
+  margin-top: 100px;
+  background-color: #fff;
+  border-radius: 5px;
+}
 .image {
   width: 150px;
   height: 150px;
@@ -41,6 +46,7 @@
   font-weight: 600;
   color: #1f2a36;
   margin-top: 30px;
+  margin-left: 35px;
 }
 .skill-item{
   background-color: #FBB01799;
@@ -112,6 +118,11 @@
 }
 #title{
   font-size: 17px;
+  font-weight: 600;
+  color: #1f2a36;
+}
+#titles{
+  font-size: 32px;
   font-weight: 600;
   color: #1f2a36;
 }

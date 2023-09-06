@@ -46,24 +46,24 @@ export default function Home() {
         <div className="container mt-5">
           <div className="row" id={styles.row}>
             <div className="col-lg-6 col-md-5" id={styles.second}>
-              <Image src={second} className='img-fluid' />
+              <Image src={second} className='img-fluid' alt='image' />
             </div>
             <div className="col-lg-6 col-md-5">
               <h2>Kenapa harus mencari tallent di peworld</h2>
               <div className='d-flex align-item-center mt-3'>
-                <Image src={tick} alt="" />
+                <Image src={tick} alt="image" />
                 <p className={styles.p}>Lorem ipsum dolor sit amet.</p>
               </div>
               <div className='d-flex align-item-center mt-3'>
-                <Image src={tick} alt="" />
+                <Image src={tick} alt="image" />
                 <p className={styles.p}>Lorem ipsum dolor sit amet.</p>
               </div>
               <div className='d-flex align-item-center mt-3'>
-                <Image src={tick} alt="" />
+                <Image src={tick} alt="image" />
                 <p className={styles.p}>Lorem ipsum dolor sit amet.</p>
               </div>
               <div className='d-flex align-item-center mt-3'>
-                <Image src={tick} alt="" />
+                <Image src={tick} alt="iamge" />
                 <p className={styles.p}>Lorem ipsum dolor sit amet.</p>
               </div>
             </div>
@@ -77,44 +77,44 @@ export default function Home() {
               <div className="d-flex">
                 <div className='col'>
                   <div className='d-flex align-item-center mt-3'>
-                    <Image src={yellowtick} />
+                    <Image src={yellowtick} alt='image' />
                     <p className={styles.p}>Java</p>
                   </div>
                   <div className='d-flex align-item-center mt-3'>
-                    <Image src={yellowtick} />
+                    <Image src={yellowtick} alt='image' />
                     <p className={styles.p}>Kotlin</p>
                   </div>
                   <div className='d-flex align-item-center mt-3'>
-                    <Image src={yellowtick} />
+                    <Image src={yellowtick} alt='image' />
                     <p className={styles.p}>PHP</p>
                   </div>
                   <div className='d-flex align-item-center mt-3'>
-                    <Image src={yellowtick} />
+                    <Image src={yellowtick} alt='image' />
                     <p className={styles.p}>JavaScript</p>
                   </div>
                 </div>
                 <div className='col'>
                   <div className='d-flex align-item-center mt-3'>
-                    <Image src={yellowtick} />
+                    <Image src={yellowtick} alt='image' />
                     <p className={styles.p}>Golang</p>
                   </div>
                   <div className='d-flex align-item-center mt-3'>
-                    <Image src={yellowtick} />
+                    <Image src={yellowtick} alt='image' />
                     <p className={styles.p}>C++</p>
                   </div>
                   <div className='d-flex align-item-center mt-3'>
-                    <Image src={yellowtick} />
+                    <Image src={yellowtick} alt='image' />
                     <p className={styles.p}>Ruby</p>
                   </div>
                   <div className='d-flex align-item-center mt-3'>
-                    <Image src={yellowtick} />
+                    <Image src={yellowtick} alt='image' />
                     <p className={styles.p}>10+ Bahasa lainnya</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-6 col-md-6 mt-5 pb-5">
-              <Image src={third} className='img-fluid' />
+              <Image src={third} className='img-fluid' alt='image' />
             </div>
           </div>
         </div>

@@ -58,9 +58,9 @@ const registerUser = () => {
         <div className="row">
           <div className="col-lg-6 col-md-6">
             <div className={styles.box}>
-              <Image src={main} width={500} height={570} />
+              <Image src={main} width={500} height={570} alt="image" />
               <div className={styles.boxImage}>
-                <Image src={logo} width={86} height={24} className={styles.logo} />
+                <Image src={logo} width={86} height={24} className={styles.logo} alt="logo" />
                 <div className={styles.wrapper}>
                   <h1 className={styles.title}>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h1>
                 </div>
@@ -74,15 +74,15 @@ const registerUser = () => {
                 <p className={styles.p}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
                 <form onSubmit={handleSubmit}>
                   <div className="mt-5">
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Nama </label>
                       <input type="text" name="name" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan nama panjang" />
                     </div>
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Email address</label>
                       <input type="email" name="email" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan alamat email" />
                     </div>
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>No handphone</label>
                       <input type="text" name="phone_number" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan no handphone" />
                     </div>

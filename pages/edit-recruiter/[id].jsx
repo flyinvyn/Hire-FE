@@ -15,21 +15,21 @@ const recruter = () => {
           <div className="col-lg-4 col-md-4">
             <div className={styles.wrapper}>
               <div className='d-flex justify-content-center'>
-                <Image src={profile} className={styles.image} />
+                <Image src={profile} className={styles.image} alt='profile' />
               </div>
               <div className={styles.wrapp}>
-                <Image src={pencil} />
+                <Image src={pencil} alt='pencil' />
                 <p className={styles.edit}>Edit</p>
               </div>
               <div className="container px-5 mt-5">
                 <p className={styles.name}>nama</p>
                 <p className={styles.job}>bidang</p>
-                <p className={styles.adress}><span><Image src={map} /></span><span style={{ marginLeft: "10px" }}>wwfww</span></p>
+                <p className={styles.adress}><span><Image src={map} alt='map' /></span><span style={{ marginLeft: "10px" }}>wwfww</span></p>
               </div>
-              <div className="d-grid gap-2 mt-5">
+              {/* <div className="d-grid gap-2 mt-5">
                 <button className={styles.simpan} type="button">Simpan</button>
                 <button className={styles.batal} type="button">Batal</button>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="col-lg-7 col-md-7 offset-md-1">
@@ -74,7 +74,7 @@ const recruter = () => {
                     <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Linkedin</label>
                     <input type="email" name='work_place' className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder='Masukan nama linkedin' />
                   </div>
-                  <button type='submit' style={{ backgroundColor: "#FBB017", border: "none", color: "#fff", fontSize: "12px", fontWeight: "700", borderRadius: "4px" }}>Simpan</button>
+                  <button type='submit' style={{ backgroundColor: "#FBB017", border: "none", color: "#fff", fontSize: "12px", fontWeight: "700", borderRadius: "4px",padding:"10px" }}>Simpan</button>
                 </form>
               </div>
             </div>

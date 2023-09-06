@@ -117,11 +117,11 @@ export const Portofolio = () => {
                         {/* borderRadius: '50%', */}
                         <div className="mb-4">
                             <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Nama aplikasi</label>
-                            <input type="text" name='apk_name' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Masukan nama aplikasi" />
+                            <input type="text" name='apk_name' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Masukan nama aplikasi" required />
                         </div>
                         <div className="mb-4">
                             <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Link repository</label>
-                            <input type="text" name='link_repo' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Masukan link repository" />
+                            <input type="text" name='link_repo' onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder="Masukan link repository" required />
                         </div>
                         <div className="mb-5">
                             <div className="mb-4">
@@ -129,11 +129,11 @@ export const Portofolio = () => {
                             </div>
                             <div className="form-check form-check-inline">
                                 <label className="form-check-label" id={styles['label-radio']} for="inlineRadio1">Aplikasi desktop</label>
-                                <input className="form-check-input" onChange={handleChange} type="radio" name='type' id="inlineRadio1" value="Aplikasi desktop" />
+                                <input className="form-check-input" onChange={handleChange} type="radio" name='type' id="inlineRadio1" value="Aplikasi desktop" required />
                             </div>
                             <div className="form-check form-check-inline">
                                 <label className="form-check-label" id={styles['label-radio']} for="inlineRadio2">Aplikasi web</label>
-                                <input className="form-check-input" onChange={handleChange} type="radio" name='type' id="inlineRadio2" value="Aplikasi web" />
+                                <input className="form-check-input" onChange={handleChange} type="radio" name='type' id="inlineRadio2" value="Aplikasi web" required />
                             </div>
                         </div>
                         <div className="mb-4">

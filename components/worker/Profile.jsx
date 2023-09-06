@@ -1,5 +1,5 @@
 import styles from '../../styles/Edit.module.css'
-import profile from '../../public/img/profile.png'
+import noimage from '../../public/img/noimage.png'
 import pencil from '../../public/img/pencil.png'
 import map from '../../public/img/map.png'
 import Image from 'next/image'
@@ -27,17 +27,17 @@ export const Profile = () => {
             {data.map((item) => (
                 <div className={styles.wrapper}>
                     <div className='d-flex justify-content-center'>
-                        <img src={item.photo == "null" ? profile : item.photo} className={styles.image} />
+                        <Image src={item.photo == "null" ? noimage : item.photo} width={150} height={150} className={styles.image} />
                     </div>
-                    <div className={styles.wrapp}>
+                    {/* <div className={styles.wrapp}>
                         <Image src={pencil} />
                         <p className={styles.edit}>Edit</p>
-                    </div>
+                    </div> */}
                     <div className="container px-5 mt-5">
-                        <p className={styles.name}>{item.name}</p>
-                        <p className={styles.job}>{item.job_desk}</p>
-                        <p className={styles.adress}><span><Image src={map} /></span><span style={{ marginLeft: "10px" }}>{item.domisili}</span></p>
-                        <p className={styles.work}>{item.work_place}</p>
+                        <p className={styles.name}>{item.name == "undefined" ? "user name" : item.name}</p>
+                        <p className={styles.job}>{item.job_desk == "undefined" ? "...." : item.job_desk}</p>
+                        <p className={styles.adress}><span><Image src={map} /></span><span style={{ marginLeft: "10px" }}>{item.domisili == "undefined" ? "...." : item.domisili}</span></p>
+                        <p className={styles.work}>{item.work_place == "undefined" ? "...." : item.work_place}</p>
                     </div>
                         <div className="d-grid gap-2 mt-5">
                             <button className={styles.simpan} type="submit">Simpan</button>

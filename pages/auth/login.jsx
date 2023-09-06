@@ -33,10 +33,10 @@ const login = () => {
         localStorage.setItem("token", res.data.data.token)
         localStorage.setItem("id_worker", res.data.data.id_worker)
         localStorage.setItem("name", res.data.data.name)
+        localStorage.setItem("photo", res.data.data.photo)
         router.push("/");
       })
       .catch((err) => {
-        console.log(err.response);
         alert("Email/Password Wrong");
       });
   };
@@ -52,9 +52,9 @@ const login = () => {
         <div className="row">
           <div className="col-lg-6 col-md-6">
             <div className={styles.box}>
-              <Image src={main} width={500} height={570} />
+              <Image src={main} width={500} height={570} alt="image" />
               <div className={styles.boxImage}>
-                <Image src={logo} width={86} height={24} className={styles.logo} />
+                <Image src={logo} width={86} height={24} className={styles.logo} alt="logo" />
                 <div className={styles.wrapper}>
                   <h1 className={styles.title}>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h1>
                 </div>
@@ -68,7 +68,7 @@ const login = () => {
                 <p className={styles.p}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
                 <form>
                   <div className="mt-5">
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Email address</label>
                       <input type="email" name="email" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan alamat email" required />
                     </div>
