@@ -42,7 +42,7 @@ export const Carousels = () => {
                 <Carousel responsive={responsive} >
                     {datas.map((data,index)=>(
                         <div key={index} className={style.wrapper}>
-                        <Image src={data.photo} width={100} height={100} className={style.image} alt='profile' />
+                        {data.photo && <Image src={data.photo} width={100} height={100} className={style.image} alt='profile' />}
                         <h2>{data?.name}</h2>
                         <p>{data?.job_desk}</p>
                         <p>{data?.description}</p>

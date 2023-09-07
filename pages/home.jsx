@@ -82,11 +82,11 @@ const Home = () => {
       </div>
       {currentPosts.map((item, index) => (
         <div key={index} className="container bg-white" style={{ borderRadius: "4px" }}>
-          <div className="row">
-            <div className="col-lg-1 col-md-1">
-              <Image src={item.photo == "null" ? map : item.photo} width={100} height={100} style={{ borderRadius: "50%" }} alt='photo' />
+          <div className="row align-items-center">
+            <div className="col-lg-2 col-md-2">
+              {item.photo && <Image src={item.photo == "null" ? map : item.photo} width={100} height={100} style={{ borderRadius: "50%" }} alt='photo' />}
             </div>
-            <div className="col-lg-3 col-md-3 mx-5">
+            <div className="col-lg-8 col-md-8 mt-2">
               <div>
                 <h2 style={{ fontWeight: "600", fontSize: "18px", color: "#1F2A36" }}>{item?.name}</h2>
                 <p style={{ fontWeight: "400", fontSize: "13px", color: "#9EA0A5" }}>{item?.job_desk}</p>
@@ -101,7 +101,7 @@ const Home = () => {
                 ))}
               </div>
             </div>
-            <div className="col-lg-2 col-md-2 offset-md-5">
+            <div className="col-lg-2 col-md-2">
               <Link href={`/profile-worker/${item?.id_worker}`} ><button className={styles.bt}>Lihat profile</button></Link>
             </div>
           </div>

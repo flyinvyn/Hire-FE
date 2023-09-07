@@ -13,12 +13,12 @@ import { useRouter } from 'next/router'
 
 const ProfileWorker = () => {
     const router = useRouter();
-    const [login, setlogin] = useState();
-    useEffect(() => {
-        const isLogin = localStorage.getItem("photo");
-        setlogin(isLogin)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    // const [login, setlogin] = useState();
+    // useEffect(() => {
+    //     const isLogin = localStorage.getItem("photo");
+    //     setlogin(isLogin)
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
     const [workers, setWorkers] = useState([]);
     useEffect(() => {
         if (router.isReady) {
@@ -88,7 +88,7 @@ const ProfileWorker = () => {
                             {workers.map((worker, index) => (
                                 <div key={index}>
                                     <div className='d-flex justify-content-center'>
-                                        <Image src={login === "null" ? profile : login}
+                                        <Image src={worker.photo === "null" ? profile : worker.photo}
                                             width={150}
                                             height={150}
                                             style={{ marginTop: "20px", borderRadius: "50%" }} alt='profile' />
@@ -103,12 +103,15 @@ const ProfileWorker = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <div className="mt-5">
-                                            <h3 className={styles.skill}>Skill</h3>
-                                            <div className="d-flex flex-wrap">
+                                        <div className="container mt-5">
+                                            <h3 style={{fontSize:"18px",color:"#1f2a36",marginLeft:"30px",fontWeight:600}}>Skill</h3>
+                                            <div style={{marginLeft:"18px"}} className="d-flex flex-wrap">
                                                 {skils.map((skil, index) => (
                                                     <div key={index} className={styles['skill-item']}>{skil?.skill_name}</div>
                                                 ))}
+                                            </div>
+                                            <div className='mt-5 pb-5'>
+                                                <button style={{marginLeft:"18px",width:"300px",border:"none",background:"#5E50A1",color:"#fff",padding:"5px"}} className='rounded pill'>Hire</button>
                                             </div>
                                         </div>
                                         {/* <div className="mt-5">

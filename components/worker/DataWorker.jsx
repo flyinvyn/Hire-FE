@@ -108,20 +108,20 @@ export const DataWorker = () => {
                             <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Tempat kerja</label>
                             <input type="text" name='work_place' value={data.work_place == "undefined" ? "" : data.work_place} onChange={handleChange} className="form-control" id="exampleFormControlInput1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "40px" }} placeholder='Masukan tempat kerja' />
                         </div>
-                        <div className="mb-4">
+                        <div>
                             <label for="exampleFormControlTextarea1" className="form-label" id={styles.label}>Deskripsi singkat</label>
                             <textarea className="form-control" name='description' value={data.description == "undefined" ? "" : data.description} onChange={handleChange} id="exampleFormControlTextarea1" style={{ fontSize: "13px", fontWeight: "500", color: "#858D96", height: "100px" }} rows="3" placeholder='Tuliskan deskripsi singkat' />
                         </div>
                         {preview ? <Image src={preview} alt="avatar" height={200} width={200} className="m-auto my-3" style={{ width: '100' }} /> : ''}
                     </form>
                     <input type="hidden" name='id_worker' value={(data.id_worker = login)} />
-                    <button type='button' onClick={handleUpdate} style={{ backgroundColor: "#FBB017", border: "none", color: "#fff", fontSize: "12px", fontWeight: "700", borderRadius: "4px", marginTop: "30px" }}>Simpan</button>
+                    <button type='button' onClick={handleUpdate} style={{ backgroundColor: "#FBB017", border: "none", color: "#fff", fontSize: "15px", fontWeight: "700", borderRadius: "4px", marginTop: "30px" }}>Simpan</button>
                     <form onSubmit={updatePhoto}>
-                        <div className="mb-4">
+                        <div className="mt-4">
                             <label for="exampleFormControlTextarea1" className="form-label" id={styles.label}>Upload gambar</label>
                             <input className='form-control' name='photo' type="file" onChange={handleUpload} />
                         </div>
-                        <button type='submit'>click</button>
+                        <button style={{ backgroundColor: "#FBB017", border: "none", color: "#fff", fontSize: "15px", fontWeight: "700", borderRadius: "4px", marginTop: "30px", padding:"5px" }} type='submit'>click</button>
                     </form>
                 </div>
             </div>
