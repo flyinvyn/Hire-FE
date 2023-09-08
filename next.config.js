@@ -24,10 +24,6 @@ module.exports = {
         source:'/worker-profile',
         destination:'/worker/worker-profile',
       },
-      // {
-      //   source:'/edit-recruiter',
-      //   destination:'/recruiter',
-      // },
     ]
   }
 }
