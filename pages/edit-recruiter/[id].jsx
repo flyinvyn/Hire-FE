@@ -67,6 +67,7 @@ const recruter = () => {
           console.log(err);
         })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady])
 
   // const 

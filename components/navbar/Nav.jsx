@@ -20,7 +20,7 @@ const Nav = () => {
     useEffect(()=>{
         const isAuth = localStorage.getItem("role")
         setAuth(isAuth)
-    })
+    },[])
     return (
         <>
             <div className="container-fluid bg-white fixed-top">
