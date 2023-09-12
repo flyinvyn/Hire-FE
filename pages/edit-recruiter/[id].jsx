@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import ModalEditPhotoRecruiter from '../../components/modal/ModalEditPhoto'
 import Swal from 'sweetalert2'
 
-const recruter = () => {
+const Recruter = () => {
   const router = useRouter()
   const Toast = Swal.mixin({
     toast: true,
@@ -30,17 +30,17 @@ const recruter = () => {
     rec_desc: "",
     rec_emailcomp: "",
     rec_linkedin: "",
-    rec_email:"",
-    rec_phone:"",
-    rec_compname:""
+    rec_email: "",
+    rec_phone: "",
+    rec_compname: ""
   })
 
   const handleChange = (e) => {
     setData({
-        ...data,
-        [e.target.name]: e.target.value,
+      ...data,
+      [e.target.name]: e.target.value,
     });
-};
+  };
 
   const handleUpdate = () => {
     axios.put(`${process.env.NEXT_PUBLIC_API}/recruiter/profile/${router.query.id}`, data)
@@ -86,7 +86,7 @@ const recruter = () => {
               <div className="container px-5 mt-5 mb-5">
                 <p className={styles.name}>{data.rec_compname === "null" || data.rec_compname === null ? "Nama perusahaan" : data.rec_compname}</p>
                 <p className={styles.job}>{data.rec_jobfield === "null" || data.rec_jobfield === null ? "Bidang" : data.rec_jobfield}</p>
-                <p className={styles.adress} style={{paddingBottom:"20px"}}><span><Image src={map} alt='map' /></span>
+                <p className={styles.adress} style={{ paddingBottom: "20px" }}><span><Image src={map} alt='map' /></span>
                   <span style={{ marginLeft: "10px" }}>{data.rec_city === "null" || data.rec_city === null ? "Kota" : data.rec_city}</span>
                   <span>, {data.rec_province === "null" || data.rec_province === null ? "Provinsi" : data.rec_province}</span></p>
               </div>
@@ -145,4 +145,4 @@ const recruter = () => {
   )
 }
 
-export default recruter
+export default Recruter
