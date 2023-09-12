@@ -157,7 +157,7 @@ const Hire = () => {
                     </div>
                     <div className="col-lg-8 col-md-8">
                         {workers.map((worker, index) => (
-                            <div key={worker.id_worker} style={{ marginTop: "100px" }}>
+                            <div key={index} style={{ marginTop: "100px" }}>
                                 <h2 className='ps-5 pt-3' id={styles.titles}>Hubungi {worker.name}</h2>
 
                                 <p className='ps-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
