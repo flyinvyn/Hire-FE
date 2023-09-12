@@ -30,13 +30,12 @@ const ModalEditExp = ({ id_exp, id_worker, position, company_name, work_start, w
             ...data,
             [e.target.name]: e.target.value,
         });
-        console.log(data);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.put(`${process.env.NEXT_PUBLIC_API}/experience/${id_exp}`, data)
-            .then((res) => {
+            .then(() => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Successfully',
@@ -44,7 +43,7 @@ const ModalEditExp = ({ id_exp, id_worker, position, company_name, work_start, w
                 })
                 window.location.reload()
             })
-            .catch((err) => {
+            .catch(() => {
                 alert('Update failed');
             });
     };

@@ -28,7 +28,7 @@ const responsive = {
 export const Carousels = () => {
     const [datas, setDatas] = useState([]);
     useEffect(() => {
-        axios.get(`${process.env.NEXT_PUBLIC_API}/worker`)
+        axios.get(`${process.env.NEXT_PUBLIC_API}/worker/profile`)
             .then((res) => {
                 setDatas(res.data.data);
             })

@@ -164,6 +164,14 @@
   padding: 10px;
   /* width: 60px; */
 }
+.edit-photo{
+  border: none;
+  background-color: transparent;
+  color: silver;
+  font-size: 15px;
+  font-weight: 700;
+  /* width: 60px; */
+}
 .cancel-experience{
   border: none;
   background-color: #DB3022;

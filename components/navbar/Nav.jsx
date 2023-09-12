@@ -15,12 +15,12 @@ const Nav = () => {
         const isLogin = localStorage.getItem("id_worker");
         setLogin(isLogin);
     },[])
-    const [photo,setPhoto] = useState();
-    useEffect(() => {
-        const image = localStorage.getItem("photo");
-        setPhoto(image)
-    }, []);
-
+    
+    const [auth,setAuth] = useState();
+    useEffect(()=>{
+        const isAuth = localStorage.getItem("role")
+        setAuth(isAuth)
+    })
     return (
         <>
             <div className="container-fluid bg-white fixed-top">
@@ -50,50 +50,26 @@ const Nav = () => {
                                                 data-bs-display="static"
                                                 aria-expanded="false"
                                             >
-                                                <Image src={photo === "null" ? profile : photo } width={30} height={30} className={style.img} alt='profile' />
+                                                <Image src={ profile } width={30} height={30} className={style.img} alt='profile' />
                                             </div>
                                         <ul className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                                             <li>
-                                                {/* <Link href={`/edit-profile/${login}`}> */}
                                                     <button
                                                         className="dropdown-item"
                                                         type="button"
                                                         style={{ display: "inline-block" }}
-                                                        onClick={(e) => {
-                                                            
-                                                            router.push(`/edit-profile/${login}`);
-                                                            setTimeout(function () {
-                                                                window.location.reload();
-                                                            }, 1000);
-                                                        }}
-                                                    >
-                                                        Edit profile
-                                                    </button>
-                                                {/* </Link> */}
-                                            </li>
-                                            <li>
-                                                {/* <Link href={`/profile-worker/${login}`}> */}
-                                                    <button
-                                                        className="dropdown-item"
-                                                        type="button"
-                                                        style={{ display: "inline-block" }}
-                                                        onClick={(e) => {
-                                                            
-                                                            router.push(`/profile-worker/${login}`);
-                                                            setTimeout(function () {
-                                                                window.location.reload();
-                                                            }, 1000);
+                                                        onClick={() => {  
+                                                            router.push(auth === "worker" ? `/edit-profile/${login}` : `edit-recruiter/${login}`);
                                                         }}
                                                     >
                                                         Profile
                                                     </button>
-                                                {/* </Link> */}
                                             </li>
                                             <li>
                                                 <button
                                                     className="dropdown-item"
                                                     type="button"
-                                                    onClick={(e) => {
+                                                    onClick={() => {
                                                         localStorage.clear();
                                                         router.push("/");
                                                         setTimeout(function () {
@@ -106,11 +82,6 @@ const Nav = () => {
                                             </li>
                                         </ul>
                                     </div>
-
-                                    {/* <button className={style.circle} type="button">
-                                <Link href={'/profile-worker'}><Image src={profile} className={style.img}/></Link>
-                            </button> */}
-
                                 </div>
                             </div>
                         </div>

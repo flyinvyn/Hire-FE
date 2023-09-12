@@ -15,6 +15,7 @@ const RegisterUser = () => {
     name: "",
     email: "",
     password: "",
+    confirmpassword: "",
     phone_number: "",
     role:"worker"
   });
@@ -26,26 +27,42 @@ const RegisterUser = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+});
+
+  const handleRegister = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('name', data.name)
-    formData.append('email', data.email)
-    formData.append('password', data.password)
-    formData.append('phone_number', data.phone_number)
-    formData.append('role', data.role)
-    axios.post(`${process.env.NEXT_PUBLIC_API}/worker/register`, data)
-      .then((res) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Successfully',
-          text: 'Data worker created'
-        })
-        router.push("/Login");
-      })
-      .catch((err) => {
-        alert("Signup Failed")
-      })
+    try {
+      axios
+        .post(`${process.env.NEXT_PUBLIC_API}/worker/register`, data)
+        .then((res) => {
+          console.log(res.statusText);
+          if (res.status === 201) {
+            Toast.fire({
+              icon: "success",
+              title: "Sign up Succesfuly! Please check your email for further instructions",
+            }).then(() => {
+              router.push("/login");
+            });
+          } else if (res.status === 200) {
+            Toast.fire({
+              icon: "error",
+              title: res.data.message,
+            }).then(() => {
+              router.push("/register-user");
+            });
+          }
+        });
+    } catch (err) {}
   };
 
   return (
@@ -72,7 +89,7 @@ const RegisterUser = () => {
               <div className="">
                 <h1 className={styles.titles}>Halo, Pewpeople</h1>
                 <p className={styles.p}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleRegister}>
                   <div className="mt-5">
                     <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Nama </label>
@@ -93,7 +110,7 @@ const RegisterUser = () => {
                   </div>
                   <div className="mb-3">
                     <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Konfirmasi sandi</label>
-                    <input type="password" className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan konfirmasi kata sandi" />
+                    <input type="password" name="confirmpassword" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan konfirmasi kata sandi" />
                   </div>
                   <div className="d-grid">
                     <button className={styles.login} type="submit">Masuk</button>

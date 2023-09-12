@@ -2,44 +2,19 @@ import React, { useEffect, useState } from 'react'
 import Nav from '../components/navbar/Nav'
 import styles from '../styles/HomePage.module.css'
 import Image from 'next/image'
-import profile from '../public/img/profile.png'
-import map from '../public/img/map.png'
+import map from '../public/img/noimage.png'
 import Footer from '../components/footer/Footer'
 import axios from 'axios'
 import Pagination from './pagination'
 import Link from 'next/link'
+import { DropdownButton, Dropdown } from 'react-bootstrap'
 
 const Home = () => {
-  const [sort, setSort] = useState();
-  const onSelectionChange = (e) => {
-    const sortDirection = e.target.value;
-    setSort(sortDirection);
-  };
-
-  const [order, setOrder] = useState("ASC")
-  const [data, setData] = useState()
-
-  const sorting = (col) => {
-    if (order === "ASC") {
-      const sorted = [...data].sort((a, b) =>
-        a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
-      );
-      setData(sorted)
-      setOrder("DSC")
-    }
-    if (order === "DSC") {
-      const sorted = [...data].sort((a, b) =>
-        a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
-      );
-      setData(sorted)
-      setOrder("ASC")
-    }
-  }
-
+  const [loading, isLoading] = useState(false);
   const [search, setSearch] = useState("")
   const [skils, setSkils] = useState([]);
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_API}/worker`)
+    axios.get(`${process.env.NEXT_PUBLIC_API}/worker/profile`)
       .then((res) => {
         setSkils(res.data.data);
       })
@@ -49,11 +24,16 @@ const Home = () => {
   }, [])
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  const [postsPerPage] = useState(5);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = skils.slice(firstPostIndex, lastPostIndex);
+
+  const [sortOption, setSortOption] = useState('');
+  const handleSort = (option) => {
+    setSortOption(option);
+  };
 
 
   return (
@@ -68,46 +48,63 @@ const Home = () => {
         <div className="d-flex my-5" id={styles.wrapper}>
           <input type="text" className="form-control" id={styles.search} placeholder="Recipient's username" aria-label="search for any skill" onChange={(e) => setSearch(e.target.value)} />
           {/* <img src="" className='my-auto me-4' /> <span className={styles.line}></span> */}
-          <select
-            className="form-select w-25"
-            aria-label="Default select example"
-            onChange={onSelectionChange}
-          >
-            <option selected>Sort</option>
-            <option value="asc">Sort by name</option>
-            <option value="desc">Sort by place</option>
-          </select>
+          <DropdownButton variant="secondary" id="dropdown-item-button" title="Sort" className="d-flex align-item-bottom">
+            <Dropdown.Item as="button" onClick={() => handleSort("name_asc")}>
+              Name A-Z
+            </Dropdown.Item>
+            <Dropdown.Item as="button" onClick={() => handleSort("name_desc")}>
+              Name Z-A
+            </Dropdown.Item>
+          </DropdownButton>
           <button className={styles.srch} type="button">Search</button>
         </div>
       </div>
-      {currentPosts.map((item, index) => (
-        <div key={index} className="container bg-white" style={{ borderRadius: "4px" }}>
-          <div className="row align-items-center">
-            <div className="col-lg-2 col-md-2">
-              {item.photo && <Image src={item.photo == "null" ? map : item.photo} width={100} height={100} style={{ borderRadius: "50%" }} alt='photo' />}
-            </div>
-            <div className="col-lg-8 col-md-8 mt-2">
-              <div>
-                <h2 style={{ fontWeight: "600", fontSize: "18px", color: "#1F2A36" }}>{item?.name}</h2>
-                <p style={{ fontWeight: "400", fontSize: "13px", color: "#9EA0A5" }}>{item?.job_desk}</p>
-                <div className="d-flex">
-                  <p style={{ fontWeight: "400", fontSize: "13px", color: "#9EA0A5" }}>{item?.domisili}</p>
+      {currentPosts.filter((item) => {
+        if (search === "") {
+          return item
+        } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
+          return item
+        } 
+        return false
+      })
+        .sort((a, b) => {
+          switch (sortOption) {
+            case 'name_asc':
+              return a.name.localeCompare(b.name);
+            case 'name_desc':
+              return b.name.localeCompare(a.name);
+            default:
+              return 0;
+          }
+        })
+        .map((item, index) => (
+          <div key={index} className="container bg-white" style={{ borderRadius: "4px" }}>
+            <div className="row align-items-center">
+              <div className="col-lg-2 col-md-2">
+                <Image src={item.photo == "null" || item.photo === null ? map : item.photo} width={100} height={100} style={{ borderRadius: "50%" }} alt='photo' />
+              </div>
+              <div className="col-lg-8 col-md-8 mt-2">
+                <div>
+                  <h2 style={{ fontWeight: "600", fontSize: "18px", color: "#1F2A36" }}>{item?.name}</h2>
+                  <p style={{ fontWeight: "400", fontSize: "13px", color: "#9EA0A5" }}>{item?.job_desk}</p>
+                  <div className="d-flex">
+                    <p style={{ fontWeight: "400", fontSize: "13px", color: "#9EA0A5" }}>{item?.domisili}</p>
+                  </div>
+                  {/* <img src={data.photo == "null" ? noimage : data.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} /> */}
                 </div>
-                {/* <img src={data.photo == "null" ? noimage : data.photo} className='card-img-top' height={200} width={500} quality={100} style={{ objectFit: "cover", borderRadius: "4px" }} /> */}
+                <div>
+                  {item.skills.map((skill, index) => (
+                    <button key={index} className={styles.btn}>{skill === "null" ? "skill" : skill}</button>
+                  ))}
+                </div>
               </div>
-              <div>
-                {item.skills.map((skil, index) => (
-                  <button key={index} className={styles.btn}>{skil}</button>
-                ))}
+              <div className="col-lg-2 col-md-2">
+                <Link href={`/profile-worker/${item?.id_worker}`} ><button className={styles.bt}>Lihat profile</button></Link>
               </div>
             </div>
-            <div className="col-lg-2 col-md-2">
-              <Link href={`/profile-worker/${item?.id_worker}`} ><button className={styles.bt}>Lihat profile</button></Link>
-            </div>
+            <hr />
           </div>
-          <hr />
-        </div>
-      ))}
+        ))}
       <div div className='text-center'>
         <Pagination totalPosts={skils.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
       </div >

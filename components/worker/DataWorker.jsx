@@ -34,7 +34,7 @@ export const DataWorker = () => {
     useEffect(() => {
         const isLogin = localStorage.getItem("id_worker");
         setLogin(isLogin)
-        axios.get(`${process.env.NEXT_PUBLIC_API}/worker/${isLogin}`)
+        axios.get(`${process.env.NEXT_PUBLIC_API}/worker/profile/${isLogin}`)
             .then((res) => {
                 setData(res.data.data[0]);
             })
@@ -44,18 +44,11 @@ export const DataWorker = () => {
         setLogin(isLogin)
     }, [])
 
-    const handleUpdate = () => {
-        // e.preventDefault();
-        // const formData = new FormData();
-        // formData.append('name', data.name)
-        // formData.append('job_desk', data.job_desk)
-        // formData.append('domisili', data.domisili)
-        // formData.append('work_place', data.work_place)
-        // formData.append('description', data.description)
-        // formData.append('photo', photo)
-        axios.put(`${process.env.NEXT_PUBLIC_API}/worker/${login}`, data)
+    const handleUpdate = (e) => {
+        e.preventDefault()
+        axios.put(`${process.env.NEXT_PUBLIC_API}/worker/profile/${login}`, data)
             .then(() => {
-                window.location.reload();
+               
                 Swal.fire({
                     icon: 'success',
                     title: 'Successfully',
@@ -71,7 +64,7 @@ export const DataWorker = () => {
         e.preventDefault()
         const formData = new FormData();
         formData.append('photo', photo)
-        axios.put(`${process.env.NEXT_PUBLIC_API}/worker/update/${login}`, formData)
+        axios.put(`${process.env.NEXT_PUBLIC_API}/worker/profilephoto/${login}`, formData)
             .then(() => {
                 window.location.reload();
                 Swal.fire({

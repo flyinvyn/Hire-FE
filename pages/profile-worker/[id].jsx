@@ -2,27 +2,17 @@ import React, { useEffect, useState } from 'react'
 import Nav from '../../components/navbar/Nav'
 import styles from '../../styles/Edit.module.css'
 import profile from '../../public/img/profile.png'
-// import porto from '../../public/img/porto1.png'
 import map from '../../public/img/map.png'
-// import mail from '../../public/img/mail.png'
-// import github from '../../public/img/github.png'
-// import instagram from '../../public/img/instagram.png'
 import Image from 'next/image'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
 const ProfileWorker = () => {
     const router = useRouter();
-    // const [login, setlogin] = useState();
-    // useEffect(() => {
-    //     const isLogin = localStorage.getItem("photo");
-    //     setlogin(isLogin)
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [])
     const [workers, setWorkers] = useState([]);
     useEffect(() => {
         if (router.isReady) {
-            axios.get(`${process.env.NEXT_PUBLIC_API}/worker/${router.query.id}`)
+            axios.get(`${process.env.NEXT_PUBLIC_API}/worker/profile/${router.query.id}`)
                 .then((res) => {
                     setWorkers(res.data.data);
                 })
@@ -77,6 +67,13 @@ const ProfileWorker = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.isReady]);
+
+    const [role,setRole] = useState();
+    useEffect(()=>{
+        const isRole = localStorage.getItem("role")
+        setRole(isRole)
+    },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     return (
         <>
             <Nav />
@@ -88,18 +85,18 @@ const ProfileWorker = () => {
                             {workers.map((worker, index) => (
                                 <div key={index}>
                                     <div className='d-flex justify-content-center'>
-                                        <Image src={worker.photo === "null" ? profile : worker.photo}
+                                        <Image src={worker.photo === "null" || worker.photo === null ? profile : worker.photo}
                                             width={150}
                                             height={150}
                                             style={{ marginTop: "20px", borderRadius: "50%" }} alt='profile' />
                                     </div>
                                     <div className="container px-5 mt-5">
                                         <div>
-                                            <p className={styles.name}>{worker.name == "undefined" ? "" : worker.name}</p>
-                                            <p className={styles.job}>{worker.job_desk == "undefined" ? "" : worker.job_desk}</p>
-                                            <p className={styles.adress}><span><Image src={map} alt='map' /></span>{worker.domisili == "undefined" ? "" : worker.domisili}</p>
-                                            <p className={styles.adress}>{worker.work_place == "undefined" ? "" : worker.work_place}</p>
-                                            <p className={styles.adress}>{worker.description == "undefined" ? "" : worker.description}</p>
+                                            <p className={styles.name}>{worker.name == "null" || worker.name === null ? "Name" : worker.name}</p>
+                                            <p className={styles.job}>{worker.job_desk == "null" || worker.job_desk === null ? "Job desk" : worker.job_desk}</p>
+                                            <p className={styles.adress}><span><Image src={map} alt='map' /></span>{worker.domisili == "null" || worker.domisili === null ? "Domisili" : worker.domisili}</p>
+                                            <p className={styles.adress}>{worker.work_place == "null" || worker.work_place === null ? "Work place" : worker.work_place}</p>
+                                            <p className={styles.adress}>{worker.description == "null" || worker.description === null ? "Description" : worker.description}</p>
                                         </div>
                                     </div>
                                     <div>
@@ -111,23 +108,9 @@ const ProfileWorker = () => {
                                                 ))}
                                             </div>
                                             <div className='mt-5 pb-5'>
-                                                <button style={{marginLeft:"18px",width:"300px",border:"none",background:"#5E50A1",color:"#fff",padding:"5px"}} className='rounded pill'>Hire</button>
+                                                <button onClick={() => router.push(`/hire/${router.query.id}`)} style={{marginLeft:"18px",width:"300px",border:"none",background:"#5E50A1",color:"#fff",padding:"5px"}} className='rounded pill'>Hire</button>
                                             </div>
                                         </div>
-                                        {/* <div className="mt-5">
-                                        <div className="d-flex gap-3">
-                                            <Image src={mail} className='mt-3' />
-                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>Louistommo@gmail.com</p>
-                                        </div>
-                                        <div className="d-flex gap-3">
-                                            <Image src={instagram} className='mt-3' />
-                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louist91</p>
-                                        </div>
-                                        <div className="d-flex gap-3">
-                                            <Image src={github} className='mt-3' />
-                                            <p className='mt-4' style={{ color: "#9EA0A5", fontSize: "12px", fontWeight: "400" }}>@Louistommo</p>
-                                        </div>
-                                    </div> */}
                                     </div>
                                 </div>
                             ))}

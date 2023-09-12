@@ -18,13 +18,6 @@ const ModalEditPorto = ({ id_porto, apk_name, link_repo, type, children }) => {
         type
     });
 
-    console.log(id_porto);
-
-    // const [photo, setPhoto] = useState(null);
-    // const handleUpload = (e) => {
-    //     setPhoto(e.target.files[0]);
-    // };
-
     const [preview, setPreview] = useState(null);
     const [foto, setFoto] = useState(null);
     const handleUpload = (e) => {
@@ -50,7 +43,7 @@ const ModalEditPorto = ({ id_porto, apk_name, link_repo, type, children }) => {
         formData.append('photo', foto)
         formData.append('id_worker', data.id_worker)
         axios.put(`${process.env.NEXT_PUBLIC_API}/portofolio/${id_porto}`, formData)
-            .then((res) => {
+            .then(() => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Successfully',
@@ -58,7 +51,7 @@ const ModalEditPorto = ({ id_porto, apk_name, link_repo, type, children }) => {
                 })
                 window.location.reload()
             })
-            .catch((err) => {
+            .catch(() => {
                 alert('Update failed');
             });
     };

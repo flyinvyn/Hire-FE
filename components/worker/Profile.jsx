@@ -12,7 +12,7 @@ export const Profile = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
         if (router.isReady) {
-            axios.get(`${process.env.NEXT_PUBLIC_API}/worker/${router.query.id}`)
+            axios.get(`${process.env.NEXT_PUBLIC_API}/worker/profile/${router.query.id}`)
                 .then((res) => {
                     setData(res.data.data);
                 })
@@ -28,17 +28,17 @@ export const Profile = () => {
             {data.map((item,index) => (
                 <div key={index} className={styles.wrapper}>
                     <div className='d-flex justify-content-center'>
-                        {item.photo && <Image src={item.photo == "null" ? noimage : item.photo} width={150} height={150} className={styles.image} alt='profile' />}
+                        <Image src={item.photo == "null" || item.photo == null ? noimage : item.photo} width={150} height={150} style={{borderRadius:"50%",marginTop:"20px"}} alt='profile' />
                     </div>
                     {/* <div className={styles.wrapp}>
                         <Image src={pencil} />
                         <p className={styles.edit}>Edit</p>
                     </div> */}
                     <div className="container px-5 mt-5">
-                        <p className={styles.name}>{item.name == "undefined" ? "user name" : item.name}</p>
-                        <p className={styles.job}>{item.job_desk == "null" ? "...." : item.job_desk}</p>
-                        <p className={styles.adress}><span><Image src={map} alt='map' /></span><span style={{ marginLeft: "10px" }}>{item.domisili == "null" ? "...." : item.domisili}</span></p>
-                        <p className={styles.work}>{item.work_place == "null" ? "...." : item.work_place}</p>
+                        <p className={styles.name}>{item.name === "null" || item.name === null ? "user name" : item.name}</p>
+                        <p className={styles.job}>{item.job_desk === "null" || item.job_desk === null ? "Job desk" : item.job_desk}</p>
+                        <p className={styles.adress}><span><Image src={map} alt='map' /></span><span style={{ marginLeft: "10px" }}>{item.domisili === "null" || item.domisili === null ? "Domisili" : item.domisili}</span></p>
+                        <p className={styles.work}>{item.work_place === "null" || item.work_place === null ? "Work place" : item.work_place}</p>
                     </div>
                         <div className="d-grid gap-2 mt-5">
                             <button className={styles.simpan} type="submit">Simpan</button>

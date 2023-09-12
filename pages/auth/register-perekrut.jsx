@@ -4,8 +4,68 @@ import Image from "next/image"
 import main from '../../public/img/first.png'
 import logo from '../../public/logo/white.png'
 import Link from "next/link"
+import { useState } from "react"
+import axios from "axios"
+import Swal from "sweetalert2"
 
 const RegisterPerekrut = () => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+});
+  const [data,setData] = useState({
+    rec_name: "",
+    rec_email: "",
+    rec_compname: "",
+    rec_position: "",
+    rec_phone: "",
+    rec_password: "",
+    rec_confirmpassword: ""
+  })
+
+  const onChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    axios
+        .post(`${process.env.NEXT_PUBLIC_API}/recruiter/register`, data)
+        .then((res) => {
+            if (res.data.statusCode === 201) {
+                Toast.fire({
+                    title:
+                        "Sign up Succesfuly! Please check your email for further instructions",
+                    icon: "success",
+                }).then(function () {
+                    // Redirect the user
+                    window.location.href = "/login-perekrut";
+                });
+            } else {
+                Toast.fire({
+                    title: "Sorry, this email is already registered.",
+                    icon: "error",
+                }).then(function () {
+                    // Redirect the user
+                    window.location.href = "/register-perekrut";
+                });
+            }
+        })
+        .catch((err) => {
+            console.log(err.response);
+            alert("gagal register");
+        });
+};
   return (
     <>
       <Head>
@@ -34,39 +94,39 @@ const RegisterPerekrut = () => {
                   <div className="mt-5">
                     <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Nama </label>
-                      <input type="email" className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan nama panjang"/>
+                      <input type="email" className="form-control text-secondary" name="rec_name" onChange={onChange} id="exampleFormControlInput1" placeholder="Masukan nama panjang"/>
                     </div>
                     <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Email address</label>
-                      <input type="email" className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan alamat email"/>
+                      <input type="email" className="form-control text-secondary" name="rec_email" onChange={onChange} id="exampleFormControlInput1" placeholder="Masukan alamat email"/>
                     </div>
                     <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Perusahaan</label>
-                      <input type="email" className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan nama perusahaan"/>
+                      <input type="email" className="form-control text-secondary" name="rec_compname" onChange={onChange} id="exampleFormControlInput1" placeholder="Masukan nama perusahaan"/>
                     </div>
                     <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Jabatan</label>
-                      <input type="email" className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Posisi di perusahaan Anda"/>
+                      <input type="email" className="form-control text-secondary" name="rec_position" onChange={onChange} id="exampleFormControlInput1" placeholder="Posisi di perusahaan Anda"/>
                     </div>
                     <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>No handphone</label>
-                      <input type="email" className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan no handphone"/>
+                      <input type="email" className="form-control text-secondary" name="rec_phone" onChange={onChange} id="exampleFormControlInput1" placeholder="Masukan no handphone"/>
                     </div>
                   </div>
                   <div className="mb-3">
                     <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Kata sandi</label>
-                    <input type="password" className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan kata sandi"/>
+                    <input type="password" className="form-control text-secondary" name="rec_password" onChange={onChange} id="exampleFormControlInput1" placeholder="Masukan kata sandi"/>
                   </div>
                   <div className="mb-3">
                     <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Konfirmasi sandi</label>
-                    <input type="password" className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan konfirmasi kata sandi"/>
+                    <input type="password" className="form-control text-secondary" name="rec_confirmpassword" onChange={onChange} id="exampleFormControlInput1" placeholder="Masukan konfirmasi kata sandi"/>
                   </div>
                   <div className="d-grid">
-                    <button className={styles.login} type="button">Masuk</button>
+                    <button className={styles.login} onClick={handleRegister} type="button">Masuk</button>
                   </div>
                 </form>
                   <div className={styles.sign}>
-                    <p className={styles.auth}>Sudah punya akun?<span className={styles.span}><Link href={'/login'}>Masuk disini</Link></span></p>
+                    <p className={styles.auth}>Sudah punya akun?<span className={styles.span}><Link href={'/auth/login-perekrut'}>Masuk disini</Link></span></p>
                   </div>
               </div>
             </div>

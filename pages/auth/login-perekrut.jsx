@@ -9,22 +9,22 @@ import { useRouter } from "next/router"
 import axios from "axios"
 import Swal from "sweetalert2"
 
-const Login = () => {
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 2000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener("mouseenter", Swal.stopTimer);
-        toast.addEventListener("mouseleave", Swal.resumeTimer);
-    },
-});
+const LoginPerekrut = () => {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
   const router = useRouter();
   const [data, setData] = useState({
-    email: "",
-    confirmpassword: ""
+    rec_email: "",
+    rec_confirmpassword: ""
   });
 
   const onChange = (e) => {
@@ -35,17 +35,17 @@ const Login = () => {
   };
   const onClick = (e) => {
     e.preventDefault();
-    axios.post(`${process.env.NEXT_PUBLIC_API}/worker/login`, data)
+    axios.post(`${process.env.NEXT_PUBLIC_API}/recruiter/login`, data)
       .then((res) => {
         Toast.fire({
-          title:
-              "Log in Succesfuly!",
-          icon: "success",
-      })
-        localStorage.setItem("token", res.data.data.token)
-        localStorage.setItem("id_worker", res.data.data.id_worker)
-        localStorage.setItem("name", res.data.data.name)
-        localStorage.setItem("role", res.data.data.role)
+            title:
+                "Login Succesfuly!",
+            icon: "success",
+        })
+        localStorage.setItem("token", res.data.data.token_user)
+        localStorage.setItem("id_worker", res.data.data.rec_id)
+        localStorage.setItem("name", res.data.data.rec_name)
+        localStorage.setItem("photo", res.data.data.rec_photo)
         router.push("/");
       })
       .catch((err) => {
@@ -86,15 +86,15 @@ const Login = () => {
                   <div className="mt-5">
                     <div className="mb-3">
                       <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Email address</label>
-                      <input type="email" name="email" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan alamat email" required />
+                      <input type="email" name="rec_email" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan alamat email" required />
                     </div>
                   </div>
                   <div className="mb-3">
                     <label for="exampleFormControlInput1" className="form-label" id={styles.label}>Kata sandi</label>
-                    <input type="password" name="confirmpassword" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan kata sandi" required />
+                    <input type="password" name="rec_confirmpassword" onChange={onChange} className="form-control text-secondary" id="exampleFormControlInput1" placeholder="Masukan kata sandi" required />
                   </div>
                   <div className={styles.boxForgot}>
-                    {/* <Link href={'./'} className={styles.forgot}>Lupa Kata Sandi?</Link> */}
+                    <Link href={'./'} className={styles.forgot}>Lupa Kata Sandi?</Link>
                   </div>
                   <div className="d-grid">
                     <button className={styles.login} onClick={onClick}>Masuk</button>
@@ -114,4 +114,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginPerekrut
