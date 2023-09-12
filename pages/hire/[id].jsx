@@ -107,6 +107,18 @@ const Hire = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const [isLoading, setLoading] = useState(false);
+  useEffect(() => {
+    function simulateNetworkRequest() {
+      return new Promise((resolve) => setTimeout(resolve, 2000));
+    }
+
+    if (isLoading) {
+      simulateNetworkRequest().then(() => {
+        setLoading(false);
+      });
+    }
+  }, [isLoading]);
 
     return (
         <>
@@ -123,7 +135,7 @@ const Hire = () => {
                                     </div>
                                     <div className="container px-5 mt-5">
                                         <div>
-                                            <p className={styles.name}>{worker.name}</p>
+                                            <p className={styles.name}>{isLoading ? "Loading.." : worker.name}</p>
                                             <p className={styles.job}>Web dev</p>
                                             <p className={styles.adress}><span><Image src={map} alt='map' /></span>{worker.domisili}</p>
                                             <p className={styles.adress}>{worker.description}</p>
@@ -166,7 +178,7 @@ const Hire = () => {
                                                 <input type="hidden" name='email' value={(data.email = worker.email)} className="form-control" id="exampleFormControlInput1" />
                                                 <input type="hidden" name='rec_id' value={(data.rec_id = id)} className="form-control" id="exampleFormControlInput1" />
                                                 <input type="hidden" name='rec_compname' value={(data.rec_compname = rec.rec_compname)} className="form-control" id="exampleFormControlInput1" />
-                                                <input type="hidden" name='rec_compname' value={(data.rec_email = rec.rec_email)} className="form-control" id="exampleFormControlInput1" />
+                                                <input type="hidden" name='rec_compname' value={isLoading ? "Loading.." :(data.rec_email = rec.rec_email)} className="form-control" id="exampleFormControlInput1" />
                                             </div>
                                             <button type='submit' style={{ backgroundColor: "#FBB017", border: "none", color: "#fff", fontSize: "15px", fontWeight: "700", borderRadius: "4px", marginTop: "30px", width: "100%", height: "40px" }}>Hire</button>
                                         </form>
